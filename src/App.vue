@@ -1,28 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    父亲现在有{{total}}
+    <hr />
+    <Child :money=total v-on:update:money="total = $event"/>
+    <!-- <Child :money.sync=total /> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Child from "./Child.vue"
 export default {
   name: 'App',
+  data(){
+    return{
+      total: 10000
+    }
+  },
   components: {
-    HelloWorld
+    Child
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
