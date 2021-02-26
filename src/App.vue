@@ -1,27 +1,36 @@
 <template>
   <div id="app">
-    父亲现在有{{total}}
-    <hr />
-    <Child :money=total v-on:update:money="total = $event"/>
-    <!-- <Child :money.sync=total /> -->
+    <form @submit.prevent="submit">
+      <label>
+        <span>用户名</span>
+        <input type="text" v-model="user.username">
+      </label>
+      <label>
+        <span>密码</span>
+        <input type="password" v-model="user.password">
+      </label>
+      <!-- <button>提交按钮</button> -->
+      <input type="submit">
+    </form>
   </div>
 </template>
-
 <script>
-import Child from "./Child.vue"
-export default {
-  name: 'App',
-  data(){
-    return{
-      total: 10000
+  export default {
+    data(){
+      return {
+        user:{
+          username: '',
+          password: ''
+        }
+      }
+    },
+    methods:{
+      submit(){
+        console.log(this.user)
+      }
     }
-  },
-  components: {
-    Child
   }
-}
 </script>
-
-<style lang="scss">
+<style scoped>
 
 </style>
